@@ -50,59 +50,23 @@ public class UserRepository implements UserInterface {
 
     /**
      * @param id the id of the user to update
-     * @param name the new name of the user
-     * @param telephone the new telephone of the user
+     * @param user the user object with the new values to update
      * @return true if update was successful, false otherwise
      */
     @Override
-    public boolean updateUser(Long id, String name, Long telephone) {
-        for (User user : users) {
-            if (user.getId().equals(id)) {
-                users.remove(user);
-                Long newTel;
-                if (telephone != -1) {
-                    newTel = user.getTelephone();
-                } else {
-                    newTel = telephone;
-                }
-                users.add(new User(id, name, newTel));
+    public boolean updateUser(Long id, User user) {
+        for (User each : users) {
+            if (each.getId().equals(id)) {
+                users.remove(each);
+                // Using ternary operator to avoid null pointer exception & using less if statements
+                Long newTel = user.getTelephone() == null ? each.getTelephone() : user.getTelephone();
+                Long newId = user.getId() == null ? each.getId() : user.getId();
+                String newName = user.getName() == null ? each.getName() : user.getName();
+                users.add(new User(newId, newName, newTel));
                 return true;
             }
         }
         return false;
-    }
-
-    /**
-     * @param user the user to update
-     * @return true if update was successful, false otherwise
-     */
-    @Override
-    public boolean updateUser(User user) {
-        return UserInterface.super.updateUser(user);
-    }
-
-    /**
-     * @param id the id of the user to update
-     * @param name the new name of the user
-     * @return true if update was successful, false otherwise
-     */
-    @Override
-    public boolean updateUser(Long id, String name) {
-        return UserInterface.super.updateUser(id, name);
-    }
-
-    /**
-     * @param id the id of the user to update
-     * @return the user with the given id, null if not found
-     */
-    @Override
-    public User getUser(Long id) {
-        for (User user : users) {
-            if (user.getId().equals(id)) {
-                return user;
-            }
-        }
-        return null;
     }
 
     /**

@@ -26,16 +26,8 @@ public class UserService {
         return userdb.removeUser(id);
     }
 
-    public boolean updateUser(Long id, String name, Long telephone) {
-        return userdb.updateUser(id, name, telephone);
-    }
-
-    public boolean updateUser(User user) {
-        return userdb.updateUser(user.getId(), user.getName(), user.getTelephone());
-    }
-
-    public boolean updateUser(Long id, String name) {
-        return userdb.updateUser(id, name, Long.valueOf(-1));
+    public boolean updateUser(Long id, User user) {
+        return userdb.updateUser(id, user);
     }
 
     public List<User> getAllUsers() {

@@ -14,18 +14,7 @@ public interface UserInterface {
 
     boolean removeUser(Long id);
 
-    boolean updateUser(Long id, String name, Long telephone);
-
-    default boolean updateUser(User user) {
-        return updateUser(user.getId(), user.getName(), user.getTelephone());
-    }
-
-    default boolean updateUser(Long id, String name) {
-
-        return updateUser(id, name, -1l);
-    }
-
-    User getUser(Long id);
+    boolean updateUser(Long id, User user);
 
     List<User> getAllUsers();
 }
