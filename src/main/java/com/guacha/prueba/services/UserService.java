@@ -1,7 +1,7 @@
 package com.guacha.prueba.services;
 
 import com.guacha.prueba.models.User;
-import com.guacha.prueba.repository.UserRepository;
+import com.guacha.prueba.repository.FakeUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final UserRepository userdb;
+    private final FakeUserRepository userdb;
 
     @Autowired
-    public UserService(@Qualifier("userdb") UserRepository userdb) {
+    public UserService(@Qualifier("userdb") FakeUserRepository userdb) {
         this.userdb = userdb;
     }
 

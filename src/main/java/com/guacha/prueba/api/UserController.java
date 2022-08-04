@@ -1,6 +1,5 @@
 package com.guacha.prueba.api;
 
-import com.guacha.prueba.PostgresConfigurationProps;
 import com.guacha.prueba.models.User;
 import com.guacha.prueba.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
