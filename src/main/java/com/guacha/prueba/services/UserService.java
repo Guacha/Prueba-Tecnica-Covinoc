@@ -2,6 +2,7 @@ package com.guacha.prueba.services;
 
 import com.guacha.prueba.models.User;
 import com.guacha.prueba.repository.FakeUserRepository;
+import com.guacha.prueba.repository.PSQLUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,10 +12,10 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final FakeUserRepository userdb;
+    private final PSQLUserRepository userdb;
 
     @Autowired
-    public UserService(@Qualifier("userdb") FakeUserRepository userdb) {
+    public UserService(@Qualifier("postgresql") PSQLUserRepository userdb) {
         this.userdb = userdb;
     }
 
